@@ -23,7 +23,7 @@ namespace GME1003GoblinDanceParty
         private Random _rng;            //for all our random number needs
         private Color _starColor;       //let's have fun with colour!!
         private float _starScale;       //star size
-        private float _starTransparency;//star transparency
+        private List<float> _Startransparency;  //star transparency
         
 
 
@@ -50,7 +50,7 @@ namespace GME1003GoblinDanceParty
 
             _starColor = new Color(128 + _rng.Next(0,129), 128 + _rng.Next(0, 129), 128 + _rng.Next(0, 129));                   //this is a "relatively" easy way to create random colors
             _starScale = _rng.Next(50, 100) / 200f; //this will affect the size of the stars
-            _starTransparency = _rng.Next(25, 101)/100f;   //star transparency
+            _Startransparency = new List<float>();  //star transparency
             _starRotation = new List<float>();      //star rotation
 
             //use a separate for loop for each list - for practice
@@ -68,7 +68,12 @@ namespace GME1003GoblinDanceParty
             for (int i = 0; i < _numStars; i++)
             {
 
-                _starRotation.Add(_rng.Next(-100, 100) / 100f);
+                _starRotation.Add(_rng.Next(1, 101) / 100f); 
+            }
+            for (int i = 0; i < _numStars; i++)
+            {
+                _Startransparency.Add(_rng.Next(25, 100) / 100f);
+
             }
 
 
@@ -121,8 +126,8 @@ namespace GME1003GoblinDanceParty
                 _spriteBatch.Draw(_starSprite, 
                     new Vector2(_starsX[i], _starsY[i]),    //set the star position
                     null,                                   //ignore this
-                    _starColor * _starTransparency,         //set colour and transparency
-                    _starRotation,                          //set rotation
+                    _starColor * _Startransparency[i],         //set colour and transparency
+                    _starRotation[i],                          //set rotation
                     new Vector2(_starSprite.Width / 2, _starSprite.Height / 2), //ignore this
                     new Vector2(_starScale, _starScale),    //set scale (same number 2x)
                     SpriteEffects.None,                     //ignore this
