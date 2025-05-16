@@ -11,7 +11,7 @@ namespace GME1003GoblinDanceParty
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-
+        
         //Declare some variables
         private int _numStars;          //how many stars?
         private List<int> _starsX;      //list of star x-coordinates
@@ -19,7 +19,7 @@ namespace GME1003GoblinDanceParty
         private List<float> _starRotation;
 
         private Texture2D _starSprite;  //the sprite image for our star
-
+        private Texture2D _backround;
         private Random _rng;            //for all our random number needs
         private List<Color> _starsColor;    //let's have fun with colour!!
         private List<float> _starScale;    //star size
@@ -81,7 +81,7 @@ namespace GME1003GoblinDanceParty
             }
             for(int i = 0; i < _numStars; i++)
             {
-                _starsColor.Add(new Color(1,129));
+                _starsColor.Add(new Color(129));
             }
 
 
@@ -94,8 +94,8 @@ namespace GME1003GoblinDanceParty
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             //load out star sprite
-            _starSprite = Content.Load<Texture2D>("starSprite");
-
+            _starSprite = Content.Load<Texture2D>("heart");
+            _backround = Content.Load<Texture2D>("Back");
 
             //***This is for the goblin. Ignore it for now.
             goblin = new Goblin(Content.Load<Texture2D>("goblinIdleSpriteSheet"), 400, 400);
@@ -127,7 +127,7 @@ namespace GME1003GoblinDanceParty
 
             //it would be great to have a background image here! 
             //you could make that happen with a single Draw statement.
-
+            _spriteBatch.Draw(_backround, new Vector2(0, 0), Color.White);
             //this is where we draw the stars...
             for (int i = 0; i < _numStars; i++) 
             {
@@ -141,6 +141,7 @@ namespace GME1003GoblinDanceParty
                     SpriteEffects.None,                     //ignore this
                     0f);                                    //ignore this
             }
+
             _spriteBatch.End();
 
 

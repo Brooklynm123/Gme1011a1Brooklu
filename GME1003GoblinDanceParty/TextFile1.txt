@@ -1,0 +1,3 @@
+﻿i tried all steps but rotation wont work and colour was very confusing so that doesnt work
+after i got the hang of things i found pushing after every step was the way to go 
+i have 8 commits
