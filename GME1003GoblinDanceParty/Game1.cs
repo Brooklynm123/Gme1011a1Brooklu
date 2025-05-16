@@ -51,7 +51,7 @@ namespace GME1003GoblinDanceParty
             _starColor = new Color(128 + _rng.Next(0,129), 128 + _rng.Next(0, 129), 128 + _rng.Next(0, 129));                   //this is a "relatively" easy way to create random colors
             _starScale = _rng.Next(50, 100) / 200f; //this will affect the size of the stars
             _starTransparency = _rng.Next(25, 101)/100f;   //star transparency
-            _starRotation = new List<float>();     //star rotation
+            _starRotation = new List<float>();      //star rotation
 
             //use a separate for loop for each list - for practice
             //List of X coordinates
@@ -65,17 +65,15 @@ namespace GME1003GoblinDanceParty
             {
                 _starsY.Add(_rng.Next(0, 481)); //all star y-coordinates are between 0 and 480
             }
+            for (int i = 0; i < _numStars; i++)
+            {
 
-            //ToDo: List of Colors
-            
-            //ToDo: List of scale values
-
-            //ToDo: List of transparency values
-
-            //ToDo: List of rotation values
+                _starRotation.Add(_rng.Next(-100, 100) / 100f);
+            }
 
 
-            base.Initialize();
+
+                base.Initialize();
         }
 
         protected override void LoadContent()
